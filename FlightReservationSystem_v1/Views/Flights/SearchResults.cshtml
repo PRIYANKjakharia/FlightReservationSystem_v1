@@ -1,0 +1,35 @@
+﻿@model IEnumerable<FlightReservationSystem_v1.Models.Flight>
+
+<h2>Search Results</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Flight Number</th>
+            <th>Airline</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var flight in Model)
+        {
+            <tr>
+                <td>@flight.FlightNumber</td>
+                <td>@flight.Airline</td>
+                <td>@flight.DepartureTime</td>
+                <td>@flight.ArrivalTime</td>
+                <td>@flight.Price</td>
+                <td>
+                    <!-- Use a POST form instead of a link to hide flightId in the body of the request -->
+                    <form asp-controller="Bookings" asp-action="BookFlight" method="post">
+                        <input type="hidden" name="flightId" value="@flight.FlightId" />
+                        <button type="submit" class="btn btn-primary">Book Flight</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

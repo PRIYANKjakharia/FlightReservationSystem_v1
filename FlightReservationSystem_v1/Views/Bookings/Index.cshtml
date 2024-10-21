@@ -1,0 +1,23 @@
+﻿<table class="table">
+    <thead>
+        <tr>
+            <th>Flight</th>
+            <th>User</th>
+            <th>Passenger Count</th>
+            <th>Total Price</th>
+            <th>Booking Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.Flight.FlightNumber</td>
+                <td>@booking.User.FirstName</td>
+                <td>@booking.PassengerCount</td>
+                <td>@booking.TotalPrice</td>
+                <td>@booking.BookingDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

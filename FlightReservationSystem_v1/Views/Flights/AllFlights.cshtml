@@ -1,0 +1,37 @@
+﻿@model IEnumerable<FlightReservationSystem_v1.Models.Flight>
+
+<h2>All Available Flights</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Flight Number</th>
+            <th>Airline</th>
+            <th>Departure City</th>
+            <th>Arrival City</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var flight in Model)
+        {
+            <tr>
+                <td>@flight.FlightNumber</td>
+                <td>@flight.Airline</td>
+                <td>@flight.DepartureCity</td>
+                <td>@flight.ArrivalCity</td>
+                <td>@flight.DepartureTime</td>
+                <td>@flight.ArrivalTime</td>
+                <td>@flight.Price</td>
+                <td>
+                    <form method="post" asp-action="BookFlight" asp-controller="Bookings">
+                        <input type="hidden" name="flightId" value="@flight.FlightId" />
+                        <button type="submit">Book Flight</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

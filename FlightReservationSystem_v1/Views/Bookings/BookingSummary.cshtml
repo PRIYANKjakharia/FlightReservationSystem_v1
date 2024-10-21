@@ -1,0 +1,58 @@
+﻿@model FlightReservationSystem_v1.Models.Booking
+
+@{
+    ViewData["Title"] = "Booking Summary";
+}
+
+<h2>Booking Summary</h2>
+
+<div>
+    <h4>Booking Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            <strong>Flight Number:</strong>
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Flight.FlightNumber
+        </dd>
+        <dt class="col-sm-3">
+            <strong>Source:</strong>
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Flight.DepartureCity
+        </dd>
+        <dt class="col-sm-3">
+            <strong>Destination:</strong>
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Flight.ArrivalCity
+        </dd>
+        <dt class="col-sm-3">
+            <strong>Date:</strong>
+        </dt>
+        
+        <dt class="col-sm-3">
+            <strong>Time:</strong>
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Flight.ArrivalTime.ToString("HH:mm")
+        </dd>
+        <dt class="col-sm-3">
+            <strong>Total Price:</strong>
+        </dt>
+        <dd class="col-sm-9">
+            @Model.TotalPrice.ToString("C")  // Displays currency format
+        </dd>
+        <dt class="col-sm-3">
+            <strong>Passenger Count:</strong>
+        </dt>
+        <dd class="col-sm-9">
+            @Model.PassengerCount
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Back to Booking List</a>
+</div>
